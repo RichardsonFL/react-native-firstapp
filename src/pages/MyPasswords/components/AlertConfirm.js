@@ -1,6 +1,14 @@
-import {View, StyleSheet, Button, Alert} from 'react-native';
+import {View, StyleSheet, Button, Alert, Platform} from 'react-native';
+
 
 const AlertConfirm =  (item, delfunction) =>{
+
+  let platform = Platform.OS
+
+  if(platform === "web") {
+    let res = confirm(`Tem certeza que deletar ${item.password}?`)
+    res && delfunction(item)
+  } else {
     Alert.alert('Delte confirm ', `Você tem certeza que deseja delatar esta senha: ${item}`, [
       {
         text: 'Não',
@@ -13,5 +21,6 @@ const AlertConfirm =  (item, delfunction) =>{
       },
     ]);
   }
+}
 
 export default AlertConfirm;

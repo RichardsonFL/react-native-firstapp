@@ -23,12 +23,13 @@ export function MyPasswords(){
 
     function handlePassword(){
         const handleDeletePassword = async (item) => {
-            let passwords = await deleteItem("@pass", item);
+            
+            let passwords = await deleteItem("@pass", item.password);
             setListPassword(passwords)
         }
 
          const handleCopyPassword = async (item) => {
-            await Clipboard.setStringAsync(item);
+            await Clipboard.setStringAsync(item.password);
         }
 
         return{
@@ -42,11 +43,14 @@ export function MyPasswords(){
             <View style={styles.header}>
                 <Text style={styles.title}>Minhas senhas</Text>
             </View>
-            <View>
+            <View >
                 <FlatList
+                style={{paddingHorizontal: 12}}
                   data={listPassword} 
-                  keyExtractor={(item) => String(item)}
-                  renderItem={({item}) => <PasswordItems data={item} handlePassowrd={handlePassword}/>}/>
+                //   keyExtractor={(item) => String(item)}
+                  renderItem={({item}) => <PasswordItems data={item} handlePassowrd={handlePassword}/>
+                }
+                />
             </View>
         </SafeAreaView>
     )
@@ -63,6 +67,6 @@ const styles = StyleSheet.create({
     title:{
         color:"#fff",
         fontSize: 38,
-        fontWeight:"bold"
+        fontWeight:"bold",
     }
 })
