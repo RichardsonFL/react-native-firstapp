@@ -1,29 +1,23 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home } from "./pages/Home";
-import { MyPasswords } from "./pages/MyPasswords";
+import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const Tab = createBottomTabNavigator();
-
-export function Routes(){
-    return(
-        <Tab.Navigator>
-            <Tab.Screen 
-                name="Home"
-                component={Home}
+export default function TabLayout(){
+    return (
+        <Tabs>
+            <Tabs.Screen 
+                name="index"
                 options={{
+                    title:"Home",
                     tabBarShowLabel: false,
                     headerShown: false,
                     tabBarIcon: ({focused, size, color}) => {
                         if(focused) return <Ionicons size={size} color={color} name="home"/>;
                         return <Ionicons size={size} color={color} name="home-outline"/>;
-                    }
-                }}
-            />
-
-            <Tab.Screen 
-                name="Passwords List"
-                component={MyPasswords}
+                    },
+                }}/>
+            
+            <Tabs.Screen 
+                name="my-passwords"
                 options={{
                     tabBarShowLabel: false,
                     headerShown: false,
@@ -33,6 +27,7 @@ export function Routes(){
                     }
                 }}
             />
-        </Tab.Navigator>
+
+        </Tabs>
     )
-}
+} 
