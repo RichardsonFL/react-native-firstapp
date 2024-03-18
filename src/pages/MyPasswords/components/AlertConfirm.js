@@ -1,11 +1,11 @@
-import {View, StyleSheet, Button, Alert, Platform} from 'react-native';
+import platformAll from '@/constants/platform';
+import { Alert} from 'react-native';
 
 
 const AlertConfirm =  (item, delfunction) =>{
+  const platform = platformAll();
 
-  let platform = Platform.OS
-
-  if(platform === "web") {
+  if(platform.IS_WEB) {
     let res = confirm(`Tem certeza que deletar ${item.password}?`)
     res && delfunction(item)
   } else {
