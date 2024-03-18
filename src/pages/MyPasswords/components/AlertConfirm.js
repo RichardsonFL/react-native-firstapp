@@ -9,7 +9,7 @@ const AlertConfirm =  (item, delfunction) =>{
     let res = confirm(`Tem certeza que deletar ${item.password}?`)
     res && delfunction(item)
   } else {
-    Alert.alert('Delte confirm ', `Você tem certeza que deseja delatar esta senha: ${item}`, [
+    Alert.alert('Delete confirm ', `Você tem certeza que deseja delatar esta senha: ${item.password}`, [
       {
         text: 'Não',
         onPress: () => console.log("Nada foi removido"),

@@ -45,9 +45,11 @@ export function MyPasswords(){
             </View>
             <View >
                 <FlatList
-                style={{paddingHorizontal: 12}}
+                  style={{paddingBottom:480, maxHeight: "100vh",paddingHorizontal: 8}}
                   data={listPassword} 
                 //   keyExtractor={(item) => String(item)}
+                  scrollsToTop={true}
+                  scrollEnabled={true}
                   renderItem={({item}) => <PasswordItems data={item} handlePassowrd={handlePassword}/>
                 }
                 />
